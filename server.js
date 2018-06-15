@@ -17,19 +17,26 @@ app.get('/', function (req, res) {
 
 app.use(busboy());
 
+/*
 app.use(function(req, res) {
   req.busboy.on('upfile', function(fieldname, file, filename, encoding, mimetype) {
-    res.status(200).send.json({fieldname,file,filename,encoding,mimetype});
+    console.log("in");
+    res.json({fieldname,file,filename,encoding,mimetype});
+    //res.status(200).send.json({fieldname,file,filename,encoding,mimetype});
   });  
   req.pipe(req.busboy);
 });
-
-/*
-app.post('/api/fileanalyse',(req,res) => {
-  console.log("upfile",req.upfile)
-  res.status(200).send(req.upfile)
-})
 */
+
+app.post('/api/fileanalyse',(req,res) => {
+  eq.busboy.on('upfile', function(fieldname, file, filename, encoding, mimetype) {
+    console.log("in");
+    res.json({fieldname,file,filename,encoding,mimetype});
+    //res.status(200).send.json({fieldname,file,filename,encoding,mimetype});
+  });  
+  req.pipe(req.busboy);
+})
+
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Node.js listening ...');
