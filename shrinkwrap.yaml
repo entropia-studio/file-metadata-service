@@ -1,4 +1,5 @@
 dependencies:
+  connect-busboy: 0.0.2
   cors: 2.8.4
   express: 5.0.0-alpha.6
 packages:
@@ -15,6 +16,23 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Qmu52oQJDBg42BLIFQryCoMx4pY=
+  /busboy/0.2.14:
+    dependencies:
+      dicer: 0.2.5
+      readable-stream: 1.1.14
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-bCpiLvz0fFe7vh4qnDetNseSVFM=
+  /connect-busboy/0.0.2:
+    dependencies:
+      busboy: 0.2.14
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-rFyclmchcYheV2xmsr/ZXTuxEJc=
   /content-disposition/0.5.2:
     dev: false
     engines:
@@ -37,6 +55,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
+  /core-util-is/1.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
   /cors/2.8.4:
     dependencies:
       object-assign: 4.1.1
@@ -62,6 +84,15 @@ packages:
     dev: false
     resolution:
       integrity: sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
+  /dicer/0.2.5:
+    dependencies:
+      readable-stream: 1.1.14
+      streamsearch: 0.1.2
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-WZbAhrszIYyBLAkL3cCc0S+stw8=
   /ee-first/1.1.1:
     dev: false
     resolution:
@@ -166,6 +197,10 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-KWrKh4qCGBbluF0KKFqZvP9FgvA=
+  /isarray/0.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -261,6 +296,15 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-9JvmtIeJTdxA3MlKMi9hEJLgDV4=
+  /readable-stream/1.1.14:
+    dependencies:
+      core-util-is: 1.0.2
+      inherits: 2.0.3
+      isarray: 0.0.1
+      string_decoder: 0.10.31
+    dev: false
+    resolution:
+      integrity: sha1-fPTFTvZI44EwhMY23SB54WbAgdk=
   /router/1.3.2:
     dependencies:
       array-flatten: 2.1.1
@@ -326,6 +370,16 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+  /streamsearch/0.1.2:
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
+  /string_decoder/0.10.31:
+    dev: false
+    resolution:
+      integrity: sha1-YuIDvEF2bGwoyfyEMB2rHFMQ+pQ=
   /type-is/1.6.16:
     dependencies:
       media-typer: 0.3.0
@@ -363,5 +417,6 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 7
 shrinkwrapVersion: 3
 specifiers:
+  connect-busboy: ^0.0.2
   cors: ^2.8.1
   express: ^5.0.0-alpha.2

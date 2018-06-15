@@ -2,6 +2,7 @@
 
 var express = require('express');
 var cors = require('cors');
+var busboy = require('connect-busboy');
 
 // require and use "multer"...
 
@@ -14,9 +15,21 @@ app.get('/', function (req, res) {
      res.sendFile(process.cwd() + '/views/index.html');
   });
 
-app.get('/hello', function(req, res){
-  res.json({greetings: "Hello, API"});
+app.use(busboy());
+
+app.use(function(req, res) {
+  req.busboy.on('upfile', function(fieldname, file, filename, encoding, mimetype) {
+    res.status(200).send.json({fieldname,file,filename,encoding,mimetype});
+  });  
+  req.pipe(req.busboy);
 });
+
+/*
+app.post('/api/fileanalyse',(req,res) => {
+  console.log("upfile",req.upfile)
+  res.status(200).send(req.upfile)
+})
+*/
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Node.js listening ...');
