@@ -2,7 +2,9 @@
 
 var express = require('express');
 var cors = require('cors');
+
 var busboy = require('connect-busboy');
+
 
 // require and use "multer"...
 
@@ -17,19 +19,42 @@ app.get('/', function (req, res) {
 
 app.use(busboy());
 
+/*
 app.use(function(req, res) {
-  req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-    console.log("file",fieldname)
-  }); 
+  var busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+      console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+      file.on('data', function(data) {
+        console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+      });
+      file.on('end', function() {
+        console.log('File [' + fieldname + '] Finished');
+      });
+    });
+  
+  
   res.status(200).send("ok");
 });
 
-/*
-app.post('/api/fileanalyse',(req,res) => {
-  console.log("upfile",req.upfile)
-  res.status(200).send(req.upfile)
-})
+
 */
+
+app.post('/api/fileanalyse',(req,res) => {
+  
+    req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+      console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+      file.on('data', function(data) {
+        console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+      });
+      file.on('end', function() {
+        console.log('File [' + fieldname + '] Finished');
+      });
+    });
+  
+  
+  res.status(200).send("ok");
+})
+
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Node.js listening ...');

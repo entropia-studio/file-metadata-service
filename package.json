@@ -9,7 +9,8 @@
   "dependencies": {
     "express": "^5.0.0-alpha.2",
     "cors": "^2.8.1",
-    "connect-busboy": "^0.0.2"
+    "connect-busboy": "^0.0.2",
+    "busboy": "^0.2.14"
   },
   "engines": {
     "node": "8.11.2"
