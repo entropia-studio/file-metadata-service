@@ -48,11 +48,12 @@ app.post('/api/fileanalyse',(req,res) => {
       });
       file.on('end', function() {
         console.log('File [' + fieldname + '] Finished');
+        res.status(200).send("ok");
       });
     });
   
   
-  res.status(200).send("ok");
+  
 })
 
 
