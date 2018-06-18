@@ -9,7 +9,7 @@
   "dependencies": {
     "express": "^5.0.0-alpha.2",
     "cors": "^2.8.4",
-    "busboy-body-parser": "^0.3.2"    
+    "busboy-body-parser": "^0.3.2"
   },
   "engines": {
     "node": "8.11.2"
