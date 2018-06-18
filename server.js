@@ -3,7 +3,7 @@
 var express = require('express');
 var cors = require('cors');
 
-var busboy = require('connect-busboy');
+var busboyBodyParser = require('busboy-body-parser');
 
 
 // require and use "multer"...
@@ -17,43 +17,18 @@ app.get('/', function (req, res) {
      res.sendFile(process.cwd() + '/views/index.html');
   });
 
-app.use(busboy());
-
-/*
-app.use(function(req, res) {
-  var busboy = new Busboy({ headers: req.headers });
-    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-      console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
-      file.on('data', function(data) {
-        console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
-      });
-      file.on('end', function() {
-        console.log('File [' + fieldname + '] Finished');
-      });
-    });
-  
-  
-  res.status(200).send("ok");
-});
-
-
-*/
+app.use(busboyBodyParser());
 
 app.post('/api/fileanalyse',(req,res) => {
+  let jsonData =  {"result" : "file doesn't exixt"};
+  console.log(req.files)
+  if (req.files) {
+    jsonData = {"name" : req.files.upfile.name,
+                "type" : req.files.upfile.mimetype,
+                "size" : req.files.upfile.size}
+    }  
   
-    req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-      console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
-      file.on('data', function(data) {
-        console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
-      });
-      file.on('end', function() {
-        console.log('File [' + fieldname + '] Finished');
-        res.status(200).send("ok");
-      });
-    });
-  
-  
-  
+  res.json(jsonData);     
 })
 
 
